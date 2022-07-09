@@ -5,14 +5,14 @@ import { ZDK } from '@zoralabs/zdk';
 import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
 
 const zdk = new ZDK({
-  endpoint: 'https://api.zora.co/graphql', 
+  endpoint: 'https://api.zora.co/graphql',
   networks: [
     {
       chain: Chain.Mainnet,
       network: Network.Ethereum,
     },
-  ]}
-);
+  ],
+});
 
 export interface ZNFT {
   tokenId: string;
@@ -38,18 +38,20 @@ export const Search = () => {
       setSearchQuery(searchField);
     }, 1000);
     return () => clearTimeout(timeOutId);
-  }, [searchField])
+  }, [searchField]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setShowPreview(true);
-    zdk.search({
-      query: searchField, 
-      pagination: { limit: 5 }
-    }).then(res => {
-      console.log(res.search.nodes[0])
-    })
-  }
+    zdk
+      .search({
+        query: searchField,
+        pagination: { limit: 5 },
+      })
+      .then((res) => {
+        console.log(res.search.nodes[0]);
+      });
+  };
 
   return (
     <>
@@ -68,7 +70,7 @@ export const Search = () => {
         </label>
       </form>
       <Suggestions text={searchQuery}></Suggestions>
-      { showPreview ? <Preview></Preview> : ''}
+      {showPreview ? <Preview></Preview> : ''}
     </>
   );
 };

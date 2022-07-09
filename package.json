@@ -39,8 +39,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "yarn prettier --write ."
+    "*/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "yarn prettier"
     ]
   }
 }

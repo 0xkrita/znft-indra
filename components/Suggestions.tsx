@@ -27,11 +27,11 @@ export const Suggestions = ({ text }: { text: string }) => {
 
   return (
     <>
-    <ul>
-      {data?.search.nodes.map((znft) => (
-        <li key={znft.tokenId}>{JSON.stringify(znft, null, 2)}</li>
-      ))}
-    </ul>
+      <ul>
+        {data?.search.nodes.map((znft) => (
+          <li key={znft.tokenId}>{JSON.stringify(znft, null, 2)}</li>
+        ))}
+      </ul>
     </>
   );
 };
