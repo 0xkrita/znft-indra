@@ -1,3 +1,3 @@
 export const Preview = () => {
-  return <p>yes</p>;
+  return <p>please be patient: onSubmit does not quite work yet</p>;
 };
