@@ -1,10 +1,10 @@
 import { useEffect, useState, FormEvent } from 'react';
 import { Preview } from './Preview';
-import { Suggestions } from './Suggestions';
 import { ZDK } from '@zoralabs/zdk';
 import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
+import { Suggestions } from './Suggestions';
 
-const zdk = new ZDK({
+export const zdk = new ZDK({
   endpoint: 'https://api.zora.co/graphql',
   networks: [
     {
@@ -32,6 +32,7 @@ export const Search = () => {
   const [searchField, setSearchField] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [showPreview, setShowPreview] = useState(false);
+  // const []
 
   useEffect(() => {
     const timeOutId = setTimeout(() => {
@@ -64,7 +65,7 @@ export const Search = () => {
             value={searchField}
             onChange={(e) => {
               setSearchField(e.target.value);
-              setShowPreview(false);
+              // setShowPreview(false);
             }}
           />
         </label>
