@@ -1,9 +1,6 @@
 import { NFTPreview } from '@zoralabs/nft-components';
+import { NFTPreviewParam } from './Search';
 
-export const Preview = () => (
-  <NFTPreview
-    contract="0xabEFBc9fD2F806065b4f3C237d4b59D9A97Bcac7"
-    id="3366"
-    onClick={function noRefCheck() {}}
-  />
+export const Preview = ({ contract, id }: NFTPreviewParam) => (
+  <NFTPreview contract={contract} id={id} onClick={function noRefCheck() {}} />
 );

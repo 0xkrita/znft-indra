@@ -3,6 +3,7 @@ import { Preview } from './Preview';
 import { ZDK } from '@zoralabs/zdk';
 import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import { Suggestions } from './Suggestions';
+import { NFTDataProviderProps } from '@zoralabs/nft-components/dist/context/NFTDataProvider';
 
 export const zdk = new ZDK({
   endpoint: 'https://api.zora.co/graphql',
@@ -13,6 +14,8 @@ export const zdk = new ZDK({
     },
   ],
 });
+
+export type NFTPreviewParam = Omit<NFTDataProviderProps, 'children'>;
 
 export interface ZNFT {
   tokenId: string;
@@ -32,7 +35,7 @@ export const Search = () => {
   const [searchField, setSearchField] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [showPreview, setShowPreview] = useState(false);
-  // const []
+  const [nftPreviewQuery, setNFTPreviewQuery] = useState({} as NFTPreviewParam);
 
   useEffect(() => {
     const timeOutId = setTimeout(() => {
@@ -65,13 +68,22 @@ export const Search = () => {
             value={searchField}
             onChange={(e) => {
               setSearchField(e.target.value);
-              // setShowPreview(false);
             }}
           />
         </label>
       </form>
-      <Suggestions text={searchQuery}></Suggestions>
-      {showPreview ? <Preview></Preview> : ''}
+      <Suggestions
+        text={searchQuery}
+        updateTopToken={setNFTPreviewQuery}
+      ></Suggestions>
+      {showPreview ? (
+        <Preview
+          contract={nftPreviewQuery.contract}
+          id={nftPreviewQuery.id}
+        ></Preview>
+      ) : (
+        ''
+      )}
     </>
   );
 };

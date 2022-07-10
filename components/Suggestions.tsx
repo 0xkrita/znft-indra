@@ -1,5 +1,5 @@
 import { useQuery } from 'urql';
-import { SearchQueryResponse } from './Search';
+import { NFTPreviewParam, SearchQueryResponse } from './Search';
 
 const SearchQuery = `
   query ($text: String!) {
@@ -15,7 +15,13 @@ const SearchQuery = `
   }
 `;
 
-export const Suggestions = ({ text }: { text: string }) => {
+export const Suggestions = ({
+  text,
+  updateTopToken,
+}: {
+  text: string;
+  updateTopToken: (value: NFTPreviewParam) => void;
+}) => {
   const [{ data, fetching, error }] = useQuery<SearchQueryResponse>({
     query: SearchQuery,
     variables: { text },
