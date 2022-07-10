@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useQuery } from 'urql';
-import { NFTPreviewParam, SearchQueryResponse } from './Search';
+import { NFTPreviewParam, SearchQueryResponse, ZNFT } from './Search';
 
 const SearchQuery = `
   query ($text: String!) {
@@ -27,6 +28,15 @@ export const Suggestions = ({
     variables: { text },
     pause: !text,
   });
+
+  useEffect(() => {
+    const { tokenId, collectionAddress } =
+      data?.search.nodes?.[0] ?? ({} as ZNFT);
+    updateTopToken({
+      id: tokenId,
+      contract: collectionAddress,
+    });
+  }, [data, updateTopToken]);
 
   if (fetching) return <p>Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;

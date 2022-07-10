@@ -35,7 +35,10 @@ export const Search = () => {
   const [searchField, setSearchField] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [showPreview, setShowPreview] = useState(false);
-  const [nftPreviewQuery, setNFTPreviewQuery] = useState({} as NFTPreviewParam);
+  const [nftPreviewQuery, setNFTPreviewQuery] = useState({
+    contract: '0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7',
+    id: '7968',
+  }); // a random nouns zorb
 
   useEffect(() => {
     const timeOutId = setTimeout(() => {
@@ -47,14 +50,14 @@ export const Search = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setShowPreview(true);
-    zdk
-      .search({
-        query: searchField,
-        pagination: { limit: 5 },
-      })
-      .then((res) => {
-        console.log(res.search.nodes[0]);
-      });
+    // zdk
+    //   .search({
+    //     query: searchField,
+    //     pagination: { limit: 5 },
+    //   })
+    //   .then((res) => {
+    //     console.log(res.search.nodes[0]);
+    //   });
   };
 
   return (
