@@ -42,12 +42,12 @@ export const Suggestions = ({
   if (error) return <p>Oh no... {error.message}</p>;
 
   return (
-    <>
-      <ul>
+    <div className="bg-teal-50 text-justify px-6">
+      <ul className="list-disc">
         {data?.search.nodes.map((znft) => (
           <li key={znft.tokenId}>{JSON.stringify(znft, null, 2)}</li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
