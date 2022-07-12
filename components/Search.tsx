@@ -61,28 +61,28 @@ export const Search = () => {
   };
 
   return (
-    <>
-      <div className="container block border-b-slate-800 border-2 bg-slate-400 px-5">
-        <form onSubmit={handleSubmit}>
-          <label>
-            <input
-              className="placeholder-teal-700"
-              type="text"
-              name="name"
-              placeholder="search znft"
-              value={searchField}
-              onChange={(e) => {
-                setSearchField(e.target.value);
-              }}
-            />
-          </label>
+    <div className="container w-full border-2 border-gray-500 border-dashed m-5">
+      <div className="mx-5">
+        <form onSubmit={handleSubmit} className="mx-0 my-5">
+          <input
+            className="placeholder-teal-700 w-full border-black px-3 py-3"
+            type="text"
+            name="name"
+            placeholder="search znft"
+            value={searchField}
+            onChange={(e) => {
+              setSearchField(e.target.value);
+            }}
+          />
         </form>
       </div>
-      <div>
+      <div className="px-5">
         <Suggestions
           text={searchQuery}
           updateTopToken={setNFTPreviewQuery}
         ></Suggestions>
+      </div>
+      <div className="px-1">
         {showPreview ? (
           <Preview
             contract={nftPreviewQuery.contract}
@@ -92,6 +92,6 @@ export const Search = () => {
           ''
         )}
       </div>
-    </>
+    </div>
   );
 };

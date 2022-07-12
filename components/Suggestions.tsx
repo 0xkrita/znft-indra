@@ -42,10 +42,16 @@ export const Suggestions = ({
   if (error) return <p>Oh no... {error.message}</p>;
 
   return (
-    <div className="bg-teal-50 text-justify px-6">
+    <div className="bg-teal-50 px-7 py-3">
       <ul className="list-disc">
         {data?.search.nodes.map((znft) => (
-          <li key={znft.tokenId}>{JSON.stringify(znft, null, 2)}</li>
+          <li className="py-2" key={znft.tokenId}>
+            <code>
+              {/* <pre> */}
+              {JSON.stringify(znft, null, 2)}
+              {/* </pre> */}
+            </code>
+          </li>
         ))}
       </ul>
     </div>
