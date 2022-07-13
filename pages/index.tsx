@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { createClient, Provider } from 'urql';
 import { Search } from '../components/Search';
+import { SearchButton } from '../components/SearchButton';
 
 const client = createClient({
   url: 'https://api.zora.co/graphql',
@@ -10,7 +11,7 @@ const client = createClient({
 const Home: NextPage = () => {
   return (
     <Provider value={client}>
-      <div className="bg-stone-200">
+      <div className="bg-stone-200 font-mono">
         <Head>
           <title>Indra&apos;s net: ZNFT edition</title>
           <meta

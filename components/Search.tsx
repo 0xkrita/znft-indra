@@ -4,6 +4,7 @@ import { ZDK } from '@zoralabs/zdk';
 import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import { Suggestions } from './Suggestions';
 import { NFTDataProviderProps } from '@zoralabs/nft-components/dist/context/NFTDataProvider';
+import { SearchButton } from './SearchButton';
 
 export const zdk = new ZDK({
   endpoint: 'https://api.zora.co/graphql',
@@ -63,9 +64,12 @@ export const Search = () => {
   return (
     <div className="container w-full border-2 border-gray-500 border-dashed m-5">
       <div className="mx-5">
+        <div className="my-5">
+          <SearchButton></SearchButton>
+        </div>
         <form onSubmit={handleSubmit} className="mx-0 my-5">
           <input
-            className="placeholder-teal-700 w-full border-black px-3 py-3"
+            className="placeholder-teal-700 border-y-2 w-full px-3 py-3"
             type="text"
             name="name"
             placeholder="search znft"
@@ -82,15 +86,17 @@ export const Search = () => {
           updateTopToken={setNFTPreviewQuery}
         ></Suggestions>
       </div>
-      <div className="px-1">
-        {showPreview ? (
-          <Preview
-            contract={nftPreviewQuery.contract}
-            id={nftPreviewQuery.id}
-          ></Preview>
-        ) : (
-          ''
-        )}
+      <div className="px-1 py-1 flex justify-center">
+        <div className="box-content">
+          {showPreview ? (
+            <Preview
+              contract={nftPreviewQuery.contract}
+              id={nftPreviewQuery.id}
+            ></Preview>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     </div>
   );
