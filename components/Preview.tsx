@@ -1,13 +1,11 @@
 import { NFTPreview } from '@zoralabs/nft-components';
-import { NFTPreviewParam } from './Search';
+import { NFT } from './Search';
 
-export const Preview = ({ contract, id }: NFTPreviewParam) => {
-  console.log(`token id is: ${id}, contract is: ${contract}`);
-
+export const Preview = ({ collectionAddress, tokenId }: NFT) => {
   return (
     <NFTPreview
-      id={id}
-      contract={contract}
+      id={tokenId}
+      contract={collectionAddress}
       onClick={function noRefCheck() {}}
     />
   );

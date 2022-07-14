@@ -4,9 +4,7 @@ import { createClient, Provider } from 'urql';
 import { Search } from '../components/Search';
 import { SearchButton } from '../components/SearchButton';
 
-const client = createClient({
-  url: 'https://api.zora.co/graphql',
-});
+const client = createClient({ url: 'https://api.zora.co/graphql' });
 
 const Home: NextPage = () => {
   return (

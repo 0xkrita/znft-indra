@@ -1,42 +1,21 @@
 import { useEffect, useState, FormEvent } from 'react';
 import { Preview } from './Preview';
-import { ZDK } from '@zoralabs/zdk';
-import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import { Suggestions } from './Suggestions';
 import { NFTDataProviderProps } from '@zoralabs/nft-components/dist/context/NFTDataProvider';
 import { SearchButton } from './SearchButton';
 import { AutoComplete } from './Autocomplete';
+import { zdk } from '../utils/constants';
 
-export const zdk = new ZDK({
-  endpoint: 'https://api.zora.co/graphql',
-  networks: [
-    {
-      chain: Chain.Mainnet,
-      network: Network.Ethereum,
-    },
-  ],
-});
-
-export type NFTPreviewParam = Omit<NFTDataProviderProps, 'children'>;
-
-export interface ZNFT {
+export interface NFT {
   tokenId: string;
-  name: string;
-  description: string;
   collectionAddress: string;
-  entityType: string;
-}
-
-export interface SearchQueryResponse {
-  search: {
-    nodes: ZNFT[];
-  };
 }
 
 export const Search = () => {
   const [searchField, setSearchField] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [showPreview, setShowPreview] = useState(false);
+
   const [nftPreviewQuery, setNFTPreviewQuery] = useState({
     contract: '0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7',
     id: '7968',
@@ -52,14 +31,14 @@ export const Search = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setShowPreview(true);
-    // zdk
-    //   .search({
-    //     query: searchField,
-    //     pagination: { limit: 5 },
-    //   })
-    //   .then((res) => {
-    //     console.log(res.search.nodes[0]);
-    //   });
+    zdk
+      .search({
+        query: searchField,
+        pagination: { limit: 4 },
+      })
+      .then((res) => {
+        console.log(res.search.nodes[0]);
+      });
   };
 
   return (
@@ -67,35 +46,32 @@ export const Search = () => {
       <div className="my-5 mx-5 flex justify-center">
         <SearchButton></SearchButton>
       </div>
-      <form onSubmit={handleSubmit} className="mx-10 my-5">
+      <form className="mx-10 my-5" onSubmit={(e) => e.preventDefault()}>
         <input
           className="placeholder-teal-700 border-b-4 border-blue-600 bg-stone-200 w-full px-3 py-3"
           type="text"
           name="name"
-          placeholder="search znft"
+          placeholder="search (z)nft"
           value={searchField}
           onChange={(e) => {
             setSearchField(e.target.value);
-            setShowPreview(false);
+            // setShowPreview(false);
           }}
         />
       </form>
       <div className="mx-10">
-        <Suggestions
-          text={searchQuery}
-          updateTopToken={setNFTPreviewQuery}
-        ></Suggestions>
+        <Suggestions text={searchQuery}></Suggestions>
       </div>
       <div className="px-1 py-1 flex justify-center">
         <div className="box-content">
-          {showPreview ? (
+          {/* {showPreview ? (
             <Preview
               contract={nftPreviewQuery.contract}
               id={nftPreviewQuery.id}
             ></Preview>
           ) : (
             <AutoComplete></AutoComplete>
-          )}
+          )} */}
         </div>
       </div>
     </div>
