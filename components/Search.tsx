@@ -5,6 +5,7 @@ import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import { Suggestions } from './Suggestions';
 import { NFTDataProviderProps } from '@zoralabs/nft-components/dist/context/NFTDataProvider';
 import { SearchButton } from './SearchButton';
+import { AutoComplete } from './Autocomplete';
 
 export const zdk = new ZDK({
   endpoint: 'https://api.zora.co/graphql',
@@ -62,25 +63,24 @@ export const Search = () => {
   };
 
   return (
-    <div className="container w-full border-2 border-gray-500 border-dashed m-5">
-      <div className="mx-5">
-        <div className="my-5">
-          <SearchButton></SearchButton>
-        </div>
-        <form onSubmit={handleSubmit} className="mx-0 my-5">
-          <input
-            className="placeholder-teal-700 border-y-2 w-full px-3 py-3"
-            type="text"
-            name="name"
-            placeholder="search znft"
-            value={searchField}
-            onChange={(e) => {
-              setSearchField(e.target.value);
-            }}
-          />
-        </form>
+    <div className="w-full border border-gray-500 border-dashed">
+      <div className="my-5 mx-5 flex justify-center">
+        <SearchButton></SearchButton>
       </div>
-      <div className="px-5">
+      <form onSubmit={handleSubmit} className="mx-10 my-5">
+        <input
+          className="placeholder-teal-700 border-b-4 border-blue-600 bg-stone-200 w-full px-3 py-3"
+          type="text"
+          name="name"
+          placeholder="search znft"
+          value={searchField}
+          onChange={(e) => {
+            setSearchField(e.target.value);
+            setShowPreview(false);
+          }}
+        />
+      </form>
+      <div className="mx-10">
         <Suggestions
           text={searchQuery}
           updateTopToken={setNFTPreviewQuery}
@@ -94,7 +94,7 @@ export const Search = () => {
               id={nftPreviewQuery.id}
             ></Preview>
           ) : (
-            ''
+            <AutoComplete></AutoComplete>
           )}
         </div>
       </div>

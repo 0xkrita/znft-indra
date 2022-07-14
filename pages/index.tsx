@@ -11,7 +11,7 @@ const client = createClient({
 const Home: NextPage = () => {
   return (
     <Provider value={client}>
-      <div className="bg-stone-200 font-mono">
+      <div className="font-mono">
         <Head>
           <title>Indra&apos;s net: ZNFT edition</title>
           <meta

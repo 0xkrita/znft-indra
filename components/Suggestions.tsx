@@ -46,10 +46,8 @@ export const Suggestions = ({
       <ul className="list-disc">
         {data?.search.nodes.map((znft) => (
           <li className="py-2" key={znft.tokenId}>
-            <code>
-              {/* <pre> */}
+            <code className="selection:bg-fuchsia-300 selection:text-fuchsia-900">
               {JSON.stringify(znft, null, 2)}
-              {/* </pre> */}
             </code>
           </li>
         ))}
