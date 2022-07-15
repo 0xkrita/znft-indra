@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { createClient, Provider } from 'urql';
 import { Search } from '../components/Search';
-import { SearchButton } from '../components/SearchButton';
 
 const client = createClient({ url: 'https://api.zora.co/graphql' });
 

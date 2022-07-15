@@ -24,7 +24,7 @@ export const Search = () => {
   useEffect(() => {
     const timeOutId = setTimeout(() => {
       setSearchQuery(searchField);
-    }, 1000);
+    }, 500);
     return () => clearTimeout(timeOutId);
   }, [searchField]);
 
