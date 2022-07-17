@@ -1,3 +1,4 @@
+import { Strategies, Networks } from '@zoralabs/nft-hooks';
 import { ZDK } from '@zoralabs/zdk';
 import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
 
@@ -10,3 +11,5 @@ export const zdk = new ZDK({
     },
   ],
 });
+
+export const zdkStrategy = new Strategies.ZDKFetchStrategy(Networks.MAINNET);

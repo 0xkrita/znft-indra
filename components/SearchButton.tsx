@@ -8,6 +8,7 @@ export const SearchButton = () => {
     rounded-full
     hover:bg-slate-500
     hover:text-white
+    hover:text-8xl
     hover:scale-105
     h-36
     w-4/5

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Suggestions } from './Suggestions';
 import { SearchButton } from './SearchButton';
-import { AutoComplete } from './Autocomplete';
+// import { AutoComplete } from './Autocomplete';
+import Footer from './Footer';
 
 export interface NFT {
   tokenId: string;
@@ -41,10 +42,9 @@ export const Search = () => {
       </div>
       <div></div>
       <div className="px-1 py-1 flex justify-center">
-        <div className="box-content">
-          <AutoComplete />
-        </div>
+        <div className="box-content">{/* <AutoComplete /> */}</div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
