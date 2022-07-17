@@ -1,10 +1,7 @@
 import { useEffect, useState, FormEvent } from 'react';
-import { Preview } from './Preview';
 import { Suggestions } from './Suggestions';
-import { NFTDataProviderProps } from '@zoralabs/nft-components/dist/context/NFTDataProvider';
 import { SearchButton } from './SearchButton';
 import { AutoComplete } from './Autocomplete';
-import { zdk } from '../utils/constants';
 
 export interface NFT {
   tokenId: string;
@@ -14,12 +11,6 @@ export interface NFT {
 export const Search = () => {
   const [searchField, setSearchField] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [showPreview, setShowPreview] = useState(false);
-
-  const [nftPreviewQuery, setNFTPreviewQuery] = useState({
-    contract: '0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7',
-    id: '7968',
-  }); // a random nouns zorb
 
   useEffect(() => {
     const timeOutId = setTimeout(() => {
@@ -27,19 +18,6 @@ export const Search = () => {
     }, 500);
     return () => clearTimeout(timeOutId);
   }, [searchField]);
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setShowPreview(true);
-    zdk
-      .search({
-        query: searchField,
-        pagination: { limit: 4 },
-      })
-      .then((res) => {
-        console.log(res.search.nodes[0]);
-      });
-  };
 
   return (
     <div className="w-full border border-gray-500 border-dashed">
@@ -55,7 +33,6 @@ export const Search = () => {
           value={searchField}
           onChange={(e) => {
             setSearchField(e.target.value);
-            // setShowPreview(false);
           }}
         />
       </form>
@@ -64,14 +41,7 @@ export const Search = () => {
       </div>
       <div className="px-1 py-1 flex justify-center">
         <div className="box-content">
-          {/* {showPreview ? (
-            <Preview
-              contract={nftPreviewQuery.contract}
-              id={nftPreviewQuery.id}
-            ></Preview>
-          ) : (
-            <AutoComplete></AutoComplete>
-          )} */}
+          <AutoComplete />
         </div>
       </div>
     </div>
