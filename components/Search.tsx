@@ -1,4 +1,4 @@
-import { useEffect, useState, FormEvent } from 'react';
+import { useEffect, useState } from 'react';
 import { Suggestions } from './Suggestions';
 import { SearchButton } from './SearchButton';
 import { AutoComplete } from './Autocomplete';
@@ -22,7 +22,7 @@ export const Search = () => {
   return (
     <div className="w-full border border-gray-500 border-dashed">
       <div className="my-5 mx-5 flex justify-center">
-        <SearchButton></SearchButton>
+        <SearchButton />
       </div>
       <form className="mx-10 my-5" onSubmit={(e) => e.preventDefault()}>
         <input
@@ -39,6 +39,7 @@ export const Search = () => {
       <div className="mx-10">
         <Suggestions text={searchQuery}></Suggestions>
       </div>
+      <div></div>
       <div className="px-1 py-1 flex justify-center">
         <div className="box-content">
           <AutoComplete />
