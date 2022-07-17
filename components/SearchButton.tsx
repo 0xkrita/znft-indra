@@ -1,3 +1,4 @@
+// TODO: incorporate the search flow into the actual search
 export const SearchButton = () => {
   return (
     <button
@@ -5,8 +6,8 @@ export const SearchButton = () => {
     bg-slate-300
     text-stone-800
     rounded-full
-    hover:bg-stone-400
-    hover:text-slate-800
+    hover:bg-slate-500
+    hover:text-white
     hover:scale-105
     h-36
     w-4/5
