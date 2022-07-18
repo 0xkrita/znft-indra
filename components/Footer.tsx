@@ -13,7 +13,7 @@ const Footer = () => {
     onRest: () => setKey(key + 1),
   });
 
-  return <animated.div style={scrolling}>{`I will fade in`}</animated.div>;
+  return <animated.div style={scrolling}>{`WELCOME TO INDRA`}</animated.div>;
 };
 
 export default Footer;

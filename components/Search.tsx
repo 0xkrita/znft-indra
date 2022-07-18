@@ -38,7 +38,7 @@ export const Search = () => {
         />
       </form>
       <div className="mx-10">
-        <Suggestions text={searchQuery}></Suggestions>
+        <Suggestions text={searchQuery} />
       </div>
       <div></div>
       <div className="px-1 py-1 flex justify-center">
