@@ -23,7 +23,7 @@ const Token = () => {
             strategy={zdkStrategy}
             networkId={Networks.MAINNET}
           >
-            <SalesGraph address={address} tokenId={tokenId}></SalesGraph>
+            <SalesGraph id={tokenId} contract={address}></SalesGraph>
             <NFTFullPage id={tokenId} contract={address} />
           </MediaConfiguration>
         )}

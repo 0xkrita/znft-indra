@@ -2,13 +2,13 @@ import { useSalesHistory } from '../hooks/useSalesHistory';
 import { hashN } from '../utils/hash';
 
 export const SalesGraph = ({
-  address,
-  tokenId,
+  contract,
+  id,
 }: {
-  address: string;
-  tokenId: string;
+  contract: string;
+  id: string;
 }) => {
-  const { error, fetching, result } = useSalesHistory(address, tokenId);
+  const { error, fetching, result } = useSalesHistory(contract, id);
   console.log(result);
 
   return (
@@ -22,7 +22,7 @@ export const SalesGraph = ({
           <ul>
             {result && result.length > 0 ? (
               result.map((sales) => (
-                <li key={hashN(address, tokenId, Date.now().toString())}>
+                <li key={hashN(contract, id, Date.now().toString())}>
                   <p>
                     {sales.sellerAddress} sold to {sales.buyerAddress}
                   </p>
