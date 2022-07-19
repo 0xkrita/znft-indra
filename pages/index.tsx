@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { createClient, Provider } from 'urql';
+import { Provider } from 'urql';
+import Footer from '../components/Footer';
 import { Search } from '../components/Search';
-
-const client = createClient({ url: 'https://api.zora.co/graphql' });
+import { client } from '../utils/constants';
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +17,9 @@ const Home: NextPage = () => {
           />
           <link rel="icon" href="/favicon.svg" />
         </Head>
-        <Search></Search>
+        <Search />
+        <br></br>
+        <Footer />
       </div>
     </Provider>
   );

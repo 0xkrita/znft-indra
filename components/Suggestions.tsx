@@ -13,7 +13,7 @@ export const Suggestions = ({ text }: { text: string }) => {
       <div className="flex flex-wrap">
         {result?.map(({ tokenId, collectionAddress }) => (
           <div
-            key={hashN(tokenId, collectionAddress)}
+            key={hashN(tokenId, collectionAddress, Date.now().toString())}
             className="selection:bg-fuchsia-300 selection:text-fuchsia-900"
           >
             <Preview

@@ -9,24 +9,31 @@ export const SalesGraph = ({
   tokenId: string;
 }) => {
   const { error, fetching, result } = useSalesHistory(address, tokenId);
+  console.log(result);
 
   return (
-    <div>
+    <>
       {fetching ? (
-        <p>Loading</p>
+        <p>Loading...</p>
       ) : error ? (
         <p>Oh no... {error.message}</p>
       ) : (
-        <ul>
-          {result?.map((sales) => (
-            <li key={hashN(address, tokenId)}>
-              <p>
-                {sales.sellerAddress} sold to {sales.buyerAddress}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul>
+            {result && result.length > 0 ? (
+              result.map((sales) => (
+                <li key={hashN(address, tokenId, Date.now().toString())}>
+                  <p>
+                    {sales.sellerAddress} sold to {sales.buyerAddress}
+                  </p>
+                </li>
+              ))
+            ) : (
+              <p>Sadly No sales history found</p>
+            )}
+          </ul>
+        </>
       )}
-    </div>
+    </>
   );
 };

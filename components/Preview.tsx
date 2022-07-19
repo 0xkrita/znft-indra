@@ -6,12 +6,10 @@ import Link from 'next/link';
 
 export const Preview = ({ tokenId, collectionAddress }: NFT) => (
   <MediaConfiguration strategy={zdkStrategy} networkId={Networks.MAINNET}>
-    <Link href={`/collections/${collectionAddress}/${tokenId}`} passHref>
-      <NFTPreview
-        id={tokenId}
-        contract={collectionAddress}
-        onClick={function noRefCheck() {}}
-      />
-    </Link>
+    <NFTPreview
+      id={tokenId}
+      contract={collectionAddress}
+      href={`/collections/${collectionAddress}/${tokenId}`}
+    />
   </MediaConfiguration>
 );
