@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Suggestions } from './Suggestions';
-import { SearchButton } from './SearchButton';
-// import { AutoComplete } from './Autocomplete';
 
 export interface NFT {
   tokenId: string;
@@ -24,7 +22,7 @@ export const Search = () => {
       {/* <div className="my-5 mx-5 flex justify-center">
         <SearchButton />
       </div> */}
-      <form className="mx-10 my-5" onSubmit={(e) => e.preventDefault()}>
+      <form className="mx-5 my-5" onSubmit={(e) => e.preventDefault()}>
         <input
           className="placeholder-teal-700 border-b-4 border-blue-600 bg-stone-200 w-full px-3 py-3"
           type="text"
@@ -36,7 +34,7 @@ export const Search = () => {
           }}
         />
       </form>
-      <div className="mx-10">
+      <div className="mx-5">
         <Suggestions text={searchQuery} />
       </div>
       <div className="px-1 py-1 flex justify-center">

@@ -8,14 +8,15 @@ import Error from 'next/error';
 import { client, zdkStrategy } from '../../../utils/constants';
 import { SalesGraph } from '../../../components/SalesGraph';
 import { Provider } from 'urql';
+import { Root } from '../../../components/Root';
 
 const Token = () => {
   const router = useRouter();
   const { address, tokenId } = router.query;
 
   return (
-    <Provider value={client}>
-      <div className="mx-10 border-emerald-200 border-2 p-5 my-5">
+    <Root>
+      <div className="mx-5 border-emerald-200 border-2 p-5 my-5">
         {typeof address !== 'string' || typeof tokenId !== 'string' ? (
           <Error statusCode={404} />
         ) : (
@@ -28,7 +29,7 @@ const Token = () => {
           </MediaConfiguration>
         )}
       </div>
-    </Provider>
+    </Root>
   );
 };
 
