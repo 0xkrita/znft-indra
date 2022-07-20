@@ -21,9 +21,9 @@ export const Search = () => {
 
   return (
     <div className="w-full border border-gray-500 border-dashed">
-      <div className="my-5 mx-5 flex justify-center">
+      {/* <div className="my-5 mx-5 flex justify-center">
         <SearchButton />
-      </div>
+      </div> */}
       <form className="mx-10 my-5" onSubmit={(e) => e.preventDefault()}>
         <input
           className="placeholder-teal-700 border-b-4 border-blue-600 bg-stone-200 w-full px-3 py-3"

@@ -13,7 +13,7 @@ const Footer = () => {
     onRest: () => setKey(key + 1),
   });
 
-  return <animated.div style={scrolling}>{`WELCOME TO INDRA`}</animated.div>;
+  return <animated.div style={scrolling}>{`WELCOME TO INDRA | FIRST TIME SEARCHING WILL BE SLOWER GIVEN IT IS A FULL TEXT SEARCH`}</animated.div>;
 };
 
 export default Footer;
