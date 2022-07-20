@@ -29,7 +29,7 @@ export const SalesGraph = ({
                 </li>
               ))
             ) : (
-              <p>Sadly No sales history found</p>
+              <p>Sadly no sales history found</p>
             )}
           </ul>
         </>
