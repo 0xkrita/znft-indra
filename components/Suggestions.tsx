@@ -1,12 +1,14 @@
 import { useSuggestions } from '../hooks/useSuggestions';
 import { hashN } from '../utils/hash';
+import { WrappedError } from './WrappedError';
+import { Loading } from './Loading';
 import { Preview } from './Preview';
 
 export const Suggestions = ({ text }: { text: string }) => {
   const { error, fetching, result } = useSuggestions(text);
 
-  if (fetching) return <p>Loading...</p>;
-  if (error) return <p>Oh no... {error.message}</p>;
+  if (fetching) return <Loading />;
+  if (error) return <WrappedError error={error}></WrappedError>;
 
   return (
     <div className="bg-slate-200 px-5">

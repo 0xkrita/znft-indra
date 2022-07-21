@@ -8,7 +8,7 @@ export const Root = ({ children }: { children: JSX.Element }) => (
   <Provider value={client}>
     <div className="font-mono">
       <Head>
-        <title>Indra&apos;s net: ZNFT edition</title>
+        <title>Indra&apos;s net</title>
         <meta name="description" content="znft trace visualization in graph" />
         <link rel="icon" href="/favicon.svg" />
       </Head>

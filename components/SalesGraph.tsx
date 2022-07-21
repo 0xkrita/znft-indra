@@ -1,5 +1,7 @@
 import { useSalesHistory } from '../hooks/useSalesHistory';
 import { hashN } from '../utils/hash';
+import { Loading } from './Loading';
+import { WrappedError } from './WrappedError';
 
 export const SalesGraph = ({
   contract,
@@ -9,14 +11,14 @@ export const SalesGraph = ({
   id: string;
 }) => {
   const { error, fetching, result } = useSalesHistory(contract, id);
-  console.log(result);
+  console.debug(result);
 
   return (
     <>
       {fetching ? (
-        <p>Loading...</p>
+        <Loading />
       ) : error ? (
-        <p>Oh no... {error.message}</p>
+        <WrappedError error={error} />
       ) : (
         <>
           <ul>
