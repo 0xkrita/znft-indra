@@ -13,7 +13,7 @@ export const HistoryGraph = ({
   id: string;
 }) => {
   const { error, history, isValidating } = useHistory(contract, id);
-  console.debug(history);
+  // console.debug(history);
 
   return (
     <>
