@@ -6,7 +6,7 @@ import {
 import { useRouter } from 'next/router';
 import Error from 'next/error';
 import { client, zdkStrategy } from '../../../utils/constants';
-import { SalesGraph } from '../../../components/SalesGraph';
+import { HistoryGraph } from '../../../components/SalesGraph';
 import { Provider } from 'urql';
 import { Root } from '../../../components/Root';
 
@@ -24,7 +24,7 @@ const Token = () => {
             strategy={zdkStrategy}
             networkId={Networks.MAINNET}
           >
-            <SalesGraph id={tokenId} contract={address}></SalesGraph>
+            <HistoryGraph id={tokenId} contract={address}></HistoryGraph>
             <NFTFullPage id={tokenId} contract={address} />
           </MediaConfiguration>
         )}
