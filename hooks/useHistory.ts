@@ -41,7 +41,7 @@ export const useHistory = (
   eventTypes: EventType[] = [
     EventType.TransferEvent,
     EventType.MintEvent,
-    EventType.SaleEvent,
+    // EventType.SaleEvent, // cannot get sales info at the time of the commit anyways
   ],
   limit: number = 10
 ) => {

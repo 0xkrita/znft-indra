@@ -14,12 +14,6 @@ export const SalesHistoryQuery = gql`
           blockTimestamp
         }
       }
-      # token {
-      #   mintInfo {
-      #     originatorAddress
-      #   }
-      #   owner
-      # }
     }
   }
 `;
