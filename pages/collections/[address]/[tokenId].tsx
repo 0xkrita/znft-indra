@@ -6,7 +6,7 @@ import {
 import { useRouter } from 'next/router';
 import Error from 'next/error';
 import { client, zdkStrategy } from '../../../utils/constants';
-import { HistoryGraph } from '../../../components/SalesGraph';
+import { HistoryGraph } from '../../../components/HistoryGraph';
 import { Provider } from 'urql';
 import { Root } from '../../../components/Root';
 
