@@ -1,5 +1,6 @@
 import assert from 'assert';
-import { SaleWithTokenGql } from './gql-types';
+import { Node } from 'react-flow-renderer';
+import { EventsGql, SaleWithTokenGql } from './gql-types';
 
 /**
  * A lodash keyBy the block number of which the transaction happens.
@@ -25,3 +26,29 @@ export const keyBySalesTxHash = (
     prev[txHash] = curr;
     return prev;
   }, {});
+
+/**
+ * convert the connections into edges
+ *
+ * @param history
+ * @returns
+ */
+export const historyToEdges = (history: Array<SaleWithTokenGql | EventsGql>) =>
+  history.reduce((prev, curr) => {
+    return prev;
+  }, {});
+
+/**
+ * convert the history into a set of nodes
+ *
+ * @todo suboptimal performance with array lookups instead of a map
+ * @param history
+ * @param nodes
+ */
+export const historyToNodes = (
+  history: Array<SaleWithTokenGql | EventsGql>,
+  nodes: Node[] = []
+) =>
+  history.reduce((prev, curr) => {
+    return prev;
+  }, nodes);

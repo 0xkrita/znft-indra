@@ -4,7 +4,7 @@ import { useHistory } from '../hooks/useHistory';
 import { useSalesHistory } from '../hooks/useSalesHistory';
 import { Loading } from './Loading';
 import { WrappedError } from './WrappedError';
-import { useMemo } from 'react';
+
 export const HistoryGraph = ({
   contract,
   id,
@@ -19,11 +19,6 @@ export const HistoryGraph = ({
     error: salesError,
   } = useSalesHistory(contract, id);
 
-  // const salesByTxHash = useMemo(
-  //   () => keyBySalesTxHash(salesHistory),
-  //   [salesHistory]
-  // );
-
   return (
     <>
       {isValidating ? (
@@ -35,11 +30,9 @@ export const HistoryGraph = ({
           {history && history.length > 0 ? (
             history.map((txn, idx) => {
               switch (txn.eventType) {
-                case EventType.SaleEvent:
-                  break;
-                // TODO: honestly i dont know if we really want mint events.
-                // was going at a kinda genesis node but may be kinda extraneous
                 case EventType.MintEvent:
+                  // TODO: honestly i dont know if we really want mint events.
+                  // was going at a kinda genesis node but may be kinda extraneous
                   assert(txn.properties.__typename === 'MintEvent');
                   return (
                     // TODO: find a better key (i guess we can reuse the hashCode but

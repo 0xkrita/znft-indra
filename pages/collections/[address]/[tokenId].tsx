@@ -5,10 +5,10 @@ import {
 } from '@zoralabs/nft-components';
 import { useRouter } from 'next/router';
 import Error from 'next/error';
-import { client, zdkStrategy } from '../../../utils/constants';
+import { zdkStrategy } from '../../../utils/constants';
 import { HistoryGraph } from '../../../components/HistoryGraph';
-import { Provider } from 'urql';
 import { Root } from '../../../components/Root';
+import HistoryFlow from '../../../components/HistoryFlow';
 
 const Token = () => {
   const router = useRouter();
@@ -17,6 +17,10 @@ const Token = () => {
   return (
     <Root>
       <div className="mx-5 border-emerald-200 border-2 p-5 my-5">
+        {/* <div className="border-2 border-red-200 p5 my-5">
+          <HistoryFlow></HistoryFlow>
+        </div> */}
+
         {typeof address !== 'string' || typeof tokenId !== 'string' ? (
           <Error statusCode={404} />
         ) : (
@@ -24,7 +28,10 @@ const Token = () => {
             strategy={zdkStrategy}
             networkId={Networks.MAINNET}
           >
-            <HistoryGraph id={tokenId} contract={address}></HistoryGraph>
+            <div className="border-blue-400 border-2 p-5">
+              <HistoryGraph id={tokenId} contract={address}></HistoryGraph>
+            </div>
+
             <NFTFullPage id={tokenId} contract={address} />
           </MediaConfiguration>
         )}
