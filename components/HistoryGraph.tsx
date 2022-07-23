@@ -37,6 +37,8 @@ export const HistoryGraph = ({
               switch (txn.eventType) {
                 case EventType.SaleEvent:
                   break;
+                // TODO: honestly i dont know if we really want mint events.
+                // was going at a kinda genesis node but may be kinda extraneous
                 case EventType.MintEvent:
                   assert(txn.properties.__typename === 'MintEvent');
                   return (
@@ -58,7 +60,7 @@ export const HistoryGraph = ({
               }
             })
           ) : (
-            <h1>Sadly no sales history found</h1>
+            <h1>Sadly no transfer/sales/mint history found &#58;&#40;</h1>
           )}
           {fetching ? (
             <Loading />
