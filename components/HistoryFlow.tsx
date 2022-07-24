@@ -52,7 +52,7 @@ export default function HistoryFlow({
   // );
 
   return (
-    <div className="h-96 text-xs">
+    <div className="h-screen text-xs">
       <ReactFlow
         nodes={nodes}
         edges={edges}
