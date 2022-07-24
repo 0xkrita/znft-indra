@@ -31,6 +31,9 @@ export const keyBySalesTxHash = (
 /**
  * convert the connections into edges
  *
+ * @example
+ * Edge[] = [ { id: 'e1-2', source: '1', label: 'transfers', target: '2', animated: true } ];
+ *
  * @param {EventsGql[]} history
  * @returns {Edge[]}
  */
@@ -67,19 +70,50 @@ export const historyToEdges = (
 /**
  * convert the history into a set of nodes
  *
+ * @example
+ * Node[] = [ { id: '2', data: { label: 'Node 2' }, position: { x: 5, y: 100 } } ]
+ *
  * @todo suboptimal performance with array lookups with O(N) instead of a map of O(1)
  * @param history
  * @param nodes
  */
 export const historyToNodes = (history: Array<EventsGql>, nodes: Node[] = []) =>
-  history.reduce((prev, curr) => {
+  history.reduce((prev, curr, idx) => {
+    const currentBatch: Node[] = [];
+
     switch (curr.eventType) {
       case EventType.MintEvent:
+        assert(curr.properties.__typename === 'MintEvent');
+        currentBatch.push({
+          id: curr.properties.originatorAddress,
+          data: { label: curr.properties.originatorAddress },
+          position: { x: 5, y: idx * 100 + 5 }, // 100 offset
+        });
+        currentBatch.push({
+          id: curr.properties.toAddress,
+          data: { label: curr.properties.toAddress },
+          position: { x: 100, y: idx * 100 + 5 },
+        });
       case EventType.TransferEvent:
+        assert(curr.properties.__typename === 'TransferEvent');
+        currentBatch.push({
+          id: curr.properties.fromAddress,
+          data: { label: curr.properties.fromAddress },
+          position: { x: 5, y: idx * 100 + 5 }, // 100 offset
+        });
+        currentBatch.push({
+          id: curr.properties.toAddress,
+          data: { label: curr.properties.toAddress },
+          position: { x: 100, y: idx * 100 + 5 },
+        });
       default:
         break;
     }
 
+    // dedup
+    currentBatch.filter((e) => !nodes.some((n) => n.id === e.id));
+
+    prev.push(...currentBatch);
     return prev;
   }, nodes);
 
