@@ -1,6 +1,6 @@
 import { CombinedError } from 'urql';
 
-export const WrappedError = (
+const WrappedError = (
   { error }: { error: CombinedError } = {
     error: {
       message: 'unknown error',
@@ -9,3 +9,5 @@ export const WrappedError = (
     },
   }
 ) => <p>Oh no... {error.message}</p>;
+
+export default WrappedError;

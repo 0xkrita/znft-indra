@@ -2,16 +2,10 @@ import { useHistory } from '../hooks/useHistory';
 import { useSalesHistory } from '../hooks/useSalesHistory';
 import HistoryFlow from './HistoryFlow';
 import ListFlow from './ListFlow';
-import { Loading } from './Loading';
-import { WrappedError } from './WrappedError';
+import Loading from './Loading';
+import WrappedError from './WrappedError';
 
-export const HistoryGraph = ({
-  contract,
-  id,
-}: {
-  contract: string;
-  id: string;
-}) => {
+const HistoryGraph = ({ contract, id }: { contract: string; id: string }) => {
   const { error, history, isValidating } = useHistory(contract, id);
   const {
     result: salesHistory,
@@ -36,3 +30,5 @@ export const HistoryGraph = ({
     </>
   );
 };
+
+export default HistoryGraph;

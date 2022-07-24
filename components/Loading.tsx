@@ -1,6 +1,6 @@
 import { animated, useSpring } from 'react-spring';
 
-export const Loading = () => {
+const Loading = () => {
   const styles = useSpring({
     loop: true,
     from: { opacity: 1, diameter: 0 },
@@ -18,3 +18,5 @@ export const Loading = () => {
     </div>
   );
 };
+
+export default Loading;

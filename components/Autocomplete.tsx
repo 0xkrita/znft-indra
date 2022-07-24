@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSpring, animated, config } from 'react-spring';
 
-export const AutoComplete = () => {
+const AutoComplete = () => {
   const [flip, set] = useState(false);
 
   const props = useSpring({
@@ -15,3 +15,5 @@ export const AutoComplete = () => {
   });
   return <animated.div style={props}>I will fade in</animated.div>;
 };
+
+export default AutoComplete;

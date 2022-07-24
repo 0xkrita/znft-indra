@@ -1,10 +1,10 @@
 import { Provider } from 'urql';
 import { client } from '../utils/constants';
 import Head from 'next/head';
-import { Search } from './Search';
+import Search from './Search';
 import Footer from './Footer';
 
-export const Root = ({ children }: { children: JSX.Element }) => (
+const Root = ({ children }: { children: JSX.Element }) => (
   <Provider value={client}>
     <div className="font-mono">
       <Head>
@@ -25,3 +25,5 @@ export const Root = ({ children }: { children: JSX.Element }) => (
     </div>
   </Provider>
 );
+
+export default Root;

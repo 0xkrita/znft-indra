@@ -3,7 +3,7 @@ import { NFT } from './Search';
 import { Networks } from '@zoralabs/nft-hooks';
 import { zdkStrategy } from '../utils/constants';
 
-export const Preview = ({ tokenId, collectionAddress }: NFT) => (
+const Preview = ({ tokenId, collectionAddress }: NFT) => (
   <MediaConfiguration strategy={zdkStrategy} networkId={Networks.MAINNET}>
     <NFTPreview
       id={tokenId}
@@ -12,3 +12,5 @@ export const Preview = ({ tokenId, collectionAddress }: NFT) => (
     />
   </MediaConfiguration>
 );
+
+export default Preview;

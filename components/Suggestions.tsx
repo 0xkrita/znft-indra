@@ -1,10 +1,10 @@
 import { useSuggestions } from '../hooks/useSuggestions';
 import { hashN } from '../utils/hash';
-import { WrappedError } from './WrappedError';
-import { Loading } from './Loading';
-import { Preview } from './Preview';
+import WrappedError from './WrappedError';
+import Loading from './Loading';
+import Preview from './Preview';
 
-export const Suggestions = ({ text }: { text: string }) => {
+const Suggestions = ({ text }: { text: string }) => {
   const { error, fetching, result } = useSuggestions(text);
 
   if (fetching) return <Loading />;
@@ -28,3 +28,5 @@ export const Suggestions = ({ text }: { text: string }) => {
     </div>
   );
 };
+
+export default Suggestions;

@@ -6,8 +6,8 @@ import {
 import { useRouter } from 'next/router';
 import Error from 'next/error';
 import { zdkStrategy } from '../../../utils/constants';
-import { HistoryGraph } from '../../../components/HistoryGraph';
-import { Root } from '../../../components/Root';
+import HistoryGraph from '../../../components/HistoryGraph';
+import Root from '../../../components/Root';
 import HistoryFlow from '../../../components/HistoryFlow';
 
 const Token = () => {

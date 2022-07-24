@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Suggestions } from './Suggestions';
+import Suggestions from './Suggestions';
 
 export interface NFT {
   tokenId: string;
   collectionAddress: string;
 }
 
-export const Search = () => {
+const Search = () => {
   const [searchField, setSearchField] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -43,3 +43,5 @@ export const Search = () => {
     </div>
   );
 };
+
+export default Search;

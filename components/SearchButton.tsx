@@ -1,5 +1,5 @@
 // TODO: incorporate the search flow into the actual search
-export const SearchButton = () => {
+const SearchButton = () => {
   return (
     <button
       className="
@@ -19,3 +19,5 @@ export const SearchButton = () => {
     </button>
   );
 };
+
+export default SearchButton;
