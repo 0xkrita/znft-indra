@@ -9,6 +9,7 @@ import ReactFlow, {
   EdgeChange,
   // Connection,
 } from 'react-flow-renderer';
+import { applyWidth } from '../utils/apply-flow-style';
 import { EventsGql, SaleWithTokenGql } from '../utils/gql-types';
 import {
   combineNodes,
@@ -26,7 +27,7 @@ export default function HistoryFlow({
   sales?: SaleWithTokenGql[];
 }) {
   const [nodes, setNodes] = useState<Node[]>(
-    combineNodes(salesToNodes(sales), eventsToNodes(events))
+    applyWidth(combineNodes(salesToNodes(sales), eventsToNodes(events)))
   );
   const [edges, setEdges] = useState<Edge[]>([
     ...salesToEdges(sales),

@@ -1,5 +1,6 @@
 import { useHistory } from '../hooks/useHistory';
 import { useSalesHistory } from '../hooks/useSalesHistory';
+import HistoryFlow from './HistoryFlow';
 import ListFlow from './ListFlow';
 import { Loading } from './Loading';
 import { WrappedError } from './WrappedError';
@@ -29,7 +30,8 @@ export const HistoryGraph = ({
       ) : salesError ? (
         <WrappedError error={salesError} />
       ) : (
-        <ListFlow events={history} sales={salesHistory} />
+        // <ListFlow events={history} sales={salesHistory} />
+        <HistoryFlow events={history} sales={salesHistory} />
       )}
     </>
   );

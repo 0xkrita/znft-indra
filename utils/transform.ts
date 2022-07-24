@@ -52,6 +52,7 @@ export const eventsToEdges = (
           target: curr.properties.toAddress,
           label: 'mints to', // TODO: come up with better names
           animated: true,
+          type: 'floating',
         });
         break;
       case EventType.TransferEvent:
@@ -62,6 +63,7 @@ export const eventsToEdges = (
           target: curr.properties.toAddress,
           label: 'transfers to',
           animated: true,
+          type: 'floating',
         });
       // TODO: and more...
       default:
@@ -82,7 +84,10 @@ export const eventsToEdges = (
  * @param {Node[]} nodes - initial value
  * @return {Node[]}
  */
-export const eventsToNodes = (events: EventsGql[], nodes: Node[] = []) =>
+export const eventsToNodes = (
+  events: EventsGql[],
+  nodes: Node[] = []
+): Node[] =>
   events.reduce((prev, curr, idx) => {
     const currentBatch: Node[] = [];
 
@@ -97,8 +102,9 @@ export const eventsToNodes = (events: EventsGql[], nodes: Node[] = []) =>
         currentBatch.push({
           id: curr.properties.toAddress,
           data: { label: curr.properties.toAddress },
-          position: { x: 100, y: idx * 100 + 5 },
+          position: { x: 300, y: idx * 100 + 5 },
         });
+        break;
       case EventType.TransferEvent:
         assert(curr.properties.__typename === 'TransferEvent');
         currentBatch.push({
@@ -109,8 +115,9 @@ export const eventsToNodes = (events: EventsGql[], nodes: Node[] = []) =>
         currentBatch.push({
           id: curr.properties.toAddress,
           data: { label: curr.properties.toAddress },
-          position: { x: 100, y: idx * 100 + 5 },
+          position: { x: 300, y: idx * 100 + 5 },
         });
+        break;
       default:
         break;
     }
@@ -140,6 +147,7 @@ export const salesToEdges = (
       label: `sold to`,
       target: curr.sale.buyerAddress,
       animated: true,
+      type: 'floating',
     });
     return prev;
   }, edges);
@@ -164,8 +172,8 @@ export const salesToNodes = (
     });
     currentBatch.push({
       id: curr.sale.sellerAddress,
-      data: { label: curr.sale.buyerAddress },
-      position: { x: 150, y: idx * 150 + 5 },
+      data: { label: curr.sale.sellerAddress },
+      position: { x: 300, y: idx * 150 + 5 },
     });
     currentBatch.filter((e) => !nodes.some((n) => n.id === e.id));
     return prev;
