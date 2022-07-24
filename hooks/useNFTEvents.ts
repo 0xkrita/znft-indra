@@ -6,7 +6,7 @@ import {
 import useSWR from 'swr';
 import { zdk } from '../utils/constants';
 
-const fetchHistory = async (
+const fetchNFTEvents = async (
   address: string,
   tokenId: string,
   eventTypes: EventType[],
@@ -35,7 +35,7 @@ const fetchHistory = async (
   return { history };
 };
 
-export const useHistory = (
+export const useNFTEvents = (
   address: string,
   tokenId: string,
   eventTypes: EventType[] = [
@@ -47,7 +47,7 @@ export const useHistory = (
 ) => {
   const { data, isValidating, error } = useSWR(
     [address, tokenId, eventTypes, limit],
-    fetchHistory
+    fetchNFTEvents
   );
 
   return {

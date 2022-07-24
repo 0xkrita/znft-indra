@@ -1,4 +1,4 @@
-import { useHistory } from '../hooks/useHistory';
+import { useNFTEvents } from '../hooks/useNFTEvents';
 import { useSalesHistory } from '../hooks/useSalesHistory';
 import HistoryFlow from './HistoryFlow';
 import ListFlow from './ListFlow';
@@ -6,7 +6,7 @@ import Loading from './Loading';
 import WrappedError from './WrappedError';
 
 const HistoryGraph = ({ contract, id }: { contract: string; id: string }) => {
-  const { error, history, isValidating } = useHistory(contract, id);
+  const { error, history, isValidating } = useNFTEvents(contract, id);
   const {
     result: salesHistory,
     fetching,
