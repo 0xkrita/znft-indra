@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import ReactFlow, {
-  addEdge,
+  // addEdge,
   FitViewOptions,
   applyNodeChanges,
   applyEdgeChanges,
@@ -8,36 +8,42 @@ import ReactFlow, {
   Edge,
   NodeChange,
   EdgeChange,
-  Connection,
+  // Connection,
 } from 'react-flow-renderer';
+import { useHistory } from '../hooks/useHistory';
+import { useSalesHistory } from '../hooks/useSalesHistory';
+import { Loading } from './Loading';
+import { WrappedError } from './WrappedError';
 
-const initialNodes: Node[] = [
-  { id: '1', data: { label: 'Node 1' }, position: { x: 5, y: 5 } },
-  { id: '2', data: { label: 'Node 2' }, position: { x: 5, y: 100 } },
-];
+export default function HistoryFlow({
+  contract,
+  id,
+}: {
+  contract: string;
+  id: string;
+}) {
+  const { error, history, isValidating } = useHistory(contract, id);
+  const {
+    result: salesHistory,
+    fetching,
+    error: salesError,
+  } = useSalesHistory(contract, id);
 
-const initialEdges: Edge[] = [
-  { id: 'e1-2', source: '1', label: 'transfers', target: '2', animated: true },
-];
-
-const fitViewOptions: FitViewOptions = {
-  padding: 0.2,
-};
-
-export default function HistoryFlow() {
-  const [nodes, setNodes] = useState<Node[]>(initialNodes);
-  const [edges, setEdges] = useState<Edge[]>(initialEdges);
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
       setNodes((nds) => applyNodeChanges(changes, nds)),
     [setNodes]
   );
+
   const onEdgesChange = useCallback(
     (changes: EdgeChange[]) =>
       setEdges((eds) => applyEdgeChanges(changes, eds)),
     [setEdges]
   );
+
   // const onConnect = useCallback(
   //   (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
   //   [setEdges]
@@ -45,15 +51,25 @@ export default function HistoryFlow() {
 
   return (
     <div className="h-96 text-xs">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        // onConnect={onConnect}
-        fitView
-        fitViewOptions={fitViewOptions}
-      />
+      {isValidating ? (
+        <Loading></Loading>
+      ) : error ? (
+        <WrappedError error={error} />
+      ) : fetching ? (
+        <Loading />
+      ) : salesError ? (
+        <WrappedError error={error} />
+      ) : (
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          // onConnect={onConnect}
+          fitView
+          fitViewOptions={{ padding: 0.2 }}
+        />
+      )}
     </div>
   );
 }

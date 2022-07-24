@@ -34,14 +34,15 @@ export const keyBySalesTxHash = (
  * @example
  * Edge[] = [ { id: 'e1-2', source: '1', label: 'transfers', target: '2', animated: true } ];
  *
- * @param {EventsGql[]} history
+ * @param {EventsGql[]} events
+ * @param {Edge[]} edges - initial value
  * @returns {Edge[]}
  */
-export const historyToEdges = (
-  history: EventsGql[],
+export const eventsToEdges = (
+  events: EventsGql[],
   edges: Edge[] = []
 ): Edge[] =>
-  history.reduce((prev, curr) => {
+  events.reduce((prev, curr) => {
     switch (curr.eventType) {
       case EventType.MintEvent:
         assert(curr.properties.__typename === 'MintEvent');
@@ -76,11 +77,13 @@ export const historyToEdges = (
  * Node[] = [ { id: '2', data: { label: 'Node 2' }, position: { x: 5, y: 100 } } ]
  *
  * @todo suboptimal performance with array lookups with O(N) instead of a map of O(1)
- * @param history
- * @param nodes
+ *
+ * @param {EventsGql[]} events
+ * @param {Node[]} nodes - initial value
+ * @return {Node[]}
  */
-export const historyToNodes = (history: Array<EventsGql>, nodes: Node[] = []) =>
-  history.reduce((prev, curr, idx) => {
+export const eventsToNodes = (events: EventsGql[], nodes: Node[] = []) =>
+  events.reduce((prev, curr, idx) => {
     const currentBatch: Node[] = [];
 
     switch (curr.eventType) {
@@ -122,8 +125,9 @@ export const historyToNodes = (history: Array<EventsGql>, nodes: Node[] = []) =>
 /**
  * same as @see historyToEdges but for sales query results
  *
- * @param sales
- * @returns
+ * @param {SaleWithTokenGql[]} sales
+ * @param {Edge[]} edges initial value
+ * @returns {Edge[]}
  */
 export const salesToEdges = (
   sales: SaleWithTokenGql[],
@@ -143,8 +147,9 @@ export const salesToEdges = (
 /**
  * same as @see historyToNodes but for sales query
  *
- * @param sales
- * @returns
+ * @param {SaleWithTokenGql[]} sales
+ * @param {Node[]} nodes - initial value
+ * @returns {Node[]}
  */
 export const salesToNodes = (
   sales: SaleWithTokenGql[],
@@ -165,3 +170,15 @@ export const salesToNodes = (
     currentBatch.filter((e) => !nodes.some((n) => n.id === e.id));
     return prev;
   }, nodes);
+
+/**
+ * combine and dedup the sales nodes and events nodes
+ *
+ * @param {Node[]} nodes1
+ * @param {Node[]} nodes2
+ * @returns {Node[]}
+ */
+export const combineNodes = (nodes1: Node[], nodes2: Node[]): Node[] => {
+  nodes1.filter((n1) => nodes2.some((n2) => n2.id === n1.id));
+  return [...nodes1, ...nodes2];
+};
