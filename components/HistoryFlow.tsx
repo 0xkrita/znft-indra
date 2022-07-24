@@ -19,11 +19,11 @@ import {
 } from '../utils/transform';
 
 export default function HistoryFlow({
-  events,
-  sales,
+  events = [],
+  sales = [],
 }: {
-  events: EventsGql[];
-  sales: SaleWithTokenGql[];
+  events?: EventsGql[];
+  sales?: SaleWithTokenGql[];
 }) {
   const [nodes, setNodes] = useState<Node[]>(
     combineNodes(salesToNodes(sales), eventsToNodes(events))
