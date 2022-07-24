@@ -50,6 +50,7 @@ export const historyToEdges = (
           source: curr.properties.originatorAddress,
           target: curr.properties.toAddress,
           label: 'mints to', // TODO: come up with better names
+          animated: true,
         });
         break;
       case EventType.TransferEvent:
@@ -59,6 +60,7 @@ export const historyToEdges = (
           source: curr.properties.fromAddress,
           target: curr.properties.toAddress,
           label: 'transfers to',
+          animated: true,
         });
       // TODO: and more...
       default:
@@ -118,6 +120,7 @@ export const historyToNodes = (history: Array<EventsGql>, nodes: Node[] = []) =>
   }, nodes);
 
 /**
+ * same as @see historyToEdges but for sales query results
  *
  * @param sales
  * @returns
@@ -127,10 +130,18 @@ export const salesToEdges = (
   edges: Edge[] = []
 ): Edge[] =>
   sales.reduce((prev, curr) => {
+    prev.push({
+      id: `e${curr.sale.sellerAddress}-${curr.sale.buyerAddress}`,
+      source: curr.sale.sellerAddress,
+      label: `sold to`,
+      target: curr.sale.buyerAddress,
+      animated: true,
+    });
     return prev;
   }, edges);
 
 /**
+ * same as @see historyToNodes but for sales query
  *
  * @param sales
  * @returns
@@ -139,6 +150,18 @@ export const salesToNodes = (
   sales: SaleWithTokenGql[],
   nodes: Node[] = []
 ): Node[] =>
-  sales.reduce((prev, curr) => {
+  sales.reduce((prev, curr, idx) => {
+    const currentBatch: Node[] = [];
+    currentBatch.push({
+      id: curr.sale.buyerAddress,
+      data: { label: curr.sale.buyerAddress },
+      position: { x: 30, y: idx * 150 + 5 },
+    });
+    currentBatch.push({
+      id: curr.sale.sellerAddress,
+      data: { label: curr.sale.buyerAddress },
+      position: { x: 150, y: idx * 150 + 5 },
+    });
+    currentBatch.filter((e) => !nodes.some((n) => n.id === e.id));
     return prev;
   }, nodes);
