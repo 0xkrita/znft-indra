@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import ReactFlow, {
   // addEdge,
-  FitViewOptions,
   applyNodeChanges,
   applyEdgeChanges,
   Node,
@@ -10,27 +9,29 @@ import ReactFlow, {
   EdgeChange,
   // Connection,
 } from 'react-flow-renderer';
-import { useHistory } from '../hooks/useHistory';
-import { useSalesHistory } from '../hooks/useSalesHistory';
-import { Loading } from './Loading';
-import { WrappedError } from './WrappedError';
+import { EventsGql, SaleWithTokenGql } from '../utils/gql-types';
+import {
+  combineNodes,
+  eventsToEdges,
+  eventsToNodes,
+  salesToEdges,
+  salesToNodes,
+} from '../utils/transform';
 
 export default function HistoryFlow({
-  contract,
-  id,
+  events,
+  sales,
 }: {
-  contract: string;
-  id: string;
+  events: EventsGql[];
+  sales: SaleWithTokenGql[];
 }) {
-  const { error, history, isValidating } = useHistory(contract, id);
-  const {
-    result: salesHistory,
-    fetching,
-    error: salesError,
-  } = useSalesHistory(contract, id);
-
-  const [nodes, setNodes] = useState<Node[]>([]);
-  const [edges, setEdges] = useState<Edge[]>([]);
+  const [nodes, setNodes] = useState<Node[]>(
+    combineNodes(salesToNodes(sales), eventsToNodes(events))
+  );
+  const [edges, setEdges] = useState<Edge[]>([
+    ...salesToEdges(sales),
+    ...eventsToEdges(events),
+  ]);
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
@@ -51,25 +52,15 @@ export default function HistoryFlow({
 
   return (
     <div className="h-96 text-xs">
-      {isValidating ? (
-        <Loading></Loading>
-      ) : error ? (
-        <WrappedError error={error} />
-      ) : fetching ? (
-        <Loading />
-      ) : salesError ? (
-        <WrappedError error={error} />
-      ) : (
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          // onConnect={onConnect}
-          fitView
-          fitViewOptions={{ padding: 0.2 }}
-        />
-      )}
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        // onConnect={onConnect}
+        fitView
+        fitViewOptions={{ padding: 0.2 }}
+      />
     </div>
   );
 }
