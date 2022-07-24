@@ -1,6 +1,7 @@
+import { EventType } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import assert from 'assert';
-import { Node } from 'react-flow-renderer';
-import { EventsGql, SaleWithTokenGql } from './gql-types';
+import type { Edge, Node } from 'react-flow-renderer';
+import type { EventsGql, SaleWithTokenGql } from './gql-types';
 
 /**
  * A lodash keyBy the block number of which the transaction happens.
@@ -30,25 +31,80 @@ export const keyBySalesTxHash = (
 /**
  * convert the connections into edges
  *
- * @param history
- * @returns
+ * @param {EventsGql[]} history
+ * @returns {Edge[]}
  */
-export const historyToEdges = (history: Array<SaleWithTokenGql | EventsGql>) =>
+export const historyToEdges = (
+  history: EventsGql[],
+  edges: Edge[] = []
+): Edge[] =>
   history.reduce((prev, curr) => {
+    switch (curr.eventType) {
+      case EventType.MintEvent:
+        assert(curr.properties.__typename === 'MintEvent');
+        prev.push({
+          id: `e${curr.properties.originatorAddress}-${curr.properties.toAddress}`,
+          source: curr.properties.originatorAddress,
+          target: curr.properties.toAddress,
+          label: 'mints to', // TODO: come up with better names
+        });
+        break;
+      case EventType.TransferEvent:
+        assert(curr.properties.__typename === 'TransferEvent');
+        prev.push({
+          id: `e${curr.properties.fromAddress}-${curr.properties.toAddress}`,
+          source: curr.properties.fromAddress,
+          target: curr.properties.toAddress,
+          label: 'transfers to',
+        });
+      // TODO: and more...
+      default:
+        break;
+    }
     return prev;
-  }, {});
+  }, edges);
 
 /**
  * convert the history into a set of nodes
  *
- * @todo suboptimal performance with array lookups instead of a map
+ * @todo suboptimal performance with array lookups with O(N) instead of a map of O(1)
  * @param history
  * @param nodes
  */
-export const historyToNodes = (
-  history: Array<SaleWithTokenGql | EventsGql>,
-  nodes: Node[] = []
-) =>
+export const historyToNodes = (history: Array<EventsGql>, nodes: Node[] = []) =>
   history.reduce((prev, curr) => {
+    switch (curr.eventType) {
+      case EventType.MintEvent:
+      case EventType.TransferEvent:
+      default:
+        break;
+    }
+
+    return prev;
+  }, nodes);
+
+/**
+ *
+ * @param sales
+ * @returns
+ */
+export const salesToEdges = (
+  sales: SaleWithTokenGql[],
+  edges: Edge[] = []
+): Edge[] =>
+  sales.reduce((prev, curr) => {
+    return prev;
+  }, edges);
+
+/**
+ *
+ * @param sales
+ * @returns
+ */
+export const salesToNodes = (
+  sales: SaleWithTokenGql[],
+  nodes: Node[] = []
+): Node[] =>
+  sales.reduce((prev, curr) => {
     return prev;
   }, nodes);
