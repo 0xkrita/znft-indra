@@ -1,5 +1,5 @@
 import { SearchQuery, Token } from '@zoralabs/zdk/dist/queries/queries-sdk';
-import { useQuery, gql } from 'urql';
+import { gql, useQuery } from 'urql';
 
 export const TokenSearchQuery = gql`
   query ($text: String!) {

@@ -1,7 +1,6 @@
 import { useNFTEvents } from '../hooks/useNFTEvents';
 import { useSalesHistory } from '../hooks/useSalesHistory';
 import HistoryFlow from './HistoryFlow';
-import ListFlow from './ListFlow';
 import Loading from './Loading';
 import WrappedError from './WrappedError';
 

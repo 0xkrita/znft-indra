@@ -1,4 +1,4 @@
-import { Strategies, Networks } from '@zoralabs/nft-hooks';
+import { Networks, Strategies } from '@zoralabs/nft-hooks';
 import { ZDK } from '@zoralabs/zdk';
 import { Chain, Network } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import { createClient } from 'urql';

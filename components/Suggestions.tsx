@@ -1,8 +1,8 @@
 import { useSuggestions } from '../hooks/useSuggestions';
 import { hashN } from '../utils/hash';
-import WrappedError from './WrappedError';
 import Loading from './Loading';
 import Preview from './Preview';
+import WrappedError from './WrappedError';
 
 const Suggestions = ({ text }: { text: string }) => {
   const { error, fetching, result } = useSuggestions(text);

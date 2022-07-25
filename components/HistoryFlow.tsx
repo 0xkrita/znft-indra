@@ -1,13 +1,12 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import ReactFlow, {
+  applyEdgeChanges,
   // addEdge,
   applyNodeChanges,
-  applyEdgeChanges,
-  Node,
   Edge,
-  NodeChange,
   EdgeChange,
-  // Connection,
+  Node,
+  NodeChange,
 } from 'react-flow-renderer';
 import { applyWidth } from '../utils/apply-flow-style';
 import { EventsGql, SaleWithTokenGql } from '../utils/gql-types';

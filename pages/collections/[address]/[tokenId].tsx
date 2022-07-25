@@ -3,12 +3,11 @@ import {
   Networks,
   NFTFullPage,
 } from '@zoralabs/nft-components';
-import { useRouter } from 'next/router';
 import Error from 'next/error';
-import { zdkStrategy } from '../../../utils/constants';
+import { useRouter } from 'next/router';
 import HistoryGraph from '../../../components/HistoryGraph';
 import Root from '../../../components/Root';
-import HistoryFlow from '../../../components/HistoryFlow';
+import { zdkStrategy } from '../../../utils/constants';
 
 const Token = () => {
   const router = useRouter();
@@ -17,10 +16,6 @@ const Token = () => {
   return (
     <Root>
       <div className="mx-5 border-emerald-200 border-2 p-5 my-5">
-        {/* <div className="border-2 border-red-200 p5 my-5">
-          <HistoryFlow></HistoryFlow>
-        </div> */}
-
         {typeof address !== 'string' || typeof tokenId !== 'string' ? (
           <Error statusCode={404} />
         ) : (

@@ -1,8 +1,8 @@
+import Head from 'next/head';
 import { Provider } from 'urql';
 import { client } from '../utils/constants';
-import Head from 'next/head';
-import Search from './Search';
 import Footer from './Footer';
+import Search from './Search';
 
 const Root = ({ children }: { children: JSX.Element }) => (
   <Provider value={client}>

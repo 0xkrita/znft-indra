@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSpring, animated, config } from 'react-spring';
+import { animated, config, useSpring } from 'react-spring';
 
 const AutoComplete = () => {
   const [flip, set] = useState(false);
