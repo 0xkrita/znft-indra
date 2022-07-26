@@ -97,12 +97,12 @@ export const eventsToNodes = (
         currentBatch.push({
           id: curr.properties.originatorAddress,
           data: { label: curr.properties.originatorAddress },
-          position: { x: 5, y: idx * 100 + 5 }, // 100 offset
+          position: { x: 500, y: idx * 100 + 5 }, // 100 offset
         });
         currentBatch.push({
           id: curr.properties.toAddress,
           data: { label: curr.properties.toAddress },
-          position: { x: 300, y: idx * 100 + 5 },
+          position: { x: 1000, y: idx * 120 + 5 },
         });
         break;
       case EventType.TransferEvent:
@@ -115,7 +115,7 @@ export const eventsToNodes = (
         currentBatch.push({
           id: curr.properties.toAddress,
           data: { label: curr.properties.toAddress },
-          position: { x: 300, y: idx * 100 + 5 },
+          position: { x: 500, y: idx * 120 + 5 },
         });
         break;
       default:
@@ -173,7 +173,7 @@ export const salesToNodes = (
     currentBatch.push({
       id: curr.sale.sellerAddress,
       data: { label: curr.sale.sellerAddress },
-      position: { x: 300, y: idx * 150 + 5 },
+      position: { x: 700, y: idx * 150 + 5 },
     });
     currentBatch.filter((e) => !nodes.some((n) => n.id === e.id));
     return prev;

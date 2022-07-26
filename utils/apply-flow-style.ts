@@ -7,5 +7,5 @@ import type { Node } from 'react-flow-renderer';
  * @param {Number | undefined} width
  * @returns {Node[]}
  */
-export const applyWidth = (nodes: Node[], width: number = 400): Node[] =>
+export const applyWidth = (nodes: Node[], width: number = 350): Node[] =>
   nodes.map((n) => ({ ...n, style: { width } }));

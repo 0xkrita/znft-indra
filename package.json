@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "clean": "rm -rf .next"
   },
   "dependencies": {
     "@zoralabs/nft-components": "^1.1.2",
