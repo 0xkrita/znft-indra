@@ -20,7 +20,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-fast-marquee": "^1.3.2",
-    "react-flow-renderer": "^10.3.11",
+    "react-flow-renderer": "^10.3.12",
     "swr": "^1.3.0",
     "urql": "^2.2.2"
   },

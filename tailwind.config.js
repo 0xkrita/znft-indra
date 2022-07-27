@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        "screen/70": "70vh"
-      }
+        'screen/70': '70vh',
+      },
     },
   },
   plugins: [],
