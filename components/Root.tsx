@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Provider } from 'urql';
 import { client } from '../utils/constants';
 import Footer from './Footer';
+import Header from './Header';
 import Search from './Search';
 
 const Root = ({ children }: { children: JSX.Element }) => (
@@ -12,6 +13,7 @@ const Root = ({ children }: { children: JSX.Element }) => (
         <meta name="description" content="znft trace visualization in graph" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
+      <Header />
       <div
         className="text-sm p-3 text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
         role="alert"
