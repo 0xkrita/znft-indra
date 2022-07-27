@@ -47,7 +47,10 @@ export const useNFTEvents = (
 ) => {
   const { data, isValidating, error } = useSWR(
     [address, tokenId, eventTypes, limit],
-    fetchNFTEvents
+    fetchNFTEvents,
+    {
+      revalidateOnFocus: false,
+    }
   );
 
   return {

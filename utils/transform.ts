@@ -52,7 +52,6 @@ export const eventsToEdges = (
           source: curr.properties.originatorAddress,
           target: curr.properties.toAddress,
           label: 'mints to', // TODO: come up with better names
-          animated: true,
           type: 'floating',
         });
         break;
@@ -63,7 +62,6 @@ export const eventsToEdges = (
           source: curr.properties.fromAddress,
           target: curr.properties.toAddress,
           label: 'transfers to',
-          animated: true,
           type: 'floating',
         });
       // TODO: and more...
@@ -147,7 +145,6 @@ export const salesToEdges = (
       source: curr.sale.sellerAddress,
       label: `sold to`,
       target: curr.sale.buyerAddress,
-      animated: true,
       type: 'floating',
     });
     return prev;

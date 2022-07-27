@@ -1,4 +1,4 @@
-import ReactFlow, { useEdgesState, useNodesState } from 'react-flow-renderer';
+import ReactFlow from 'react-flow-renderer';
 import { applyWidth } from '../utils/apply-flow-style';
 import { EventsGql, SaleWithTokenGql } from '../utils/gql-types';
 import {
@@ -16,29 +16,19 @@ export default function HistoryFlow({
   events?: EventsGql[];
   sales?: SaleWithTokenGql[];
 }) {
-  const [nodes, , onNodesChange] = useNodesState(
-    applyWidth(combineNodes(salesToNodes(sales), eventsToNodes(events)))
-  );
-  const [edges, , onEdgesChange] = useEdgesState([
-    ...salesToEdges(sales),
-    ...eventsToEdges(events),
-  ]);
-
-  // const onConnect = useCallback(
-  //   (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
-  //   [setEdges]
-  // );
-
   return (
     <div className="text-xs h-screen/70">
       <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
+        defaultNodes={applyWidth(
+          combineNodes(salesToNodes(sales), eventsToNodes(events))
+        )}
+        defaultEdges={[...salesToEdges(sales), ...eventsToEdges(events)]}
+        defaultEdgeOptions={{
+          animated: true,
+        }}
         // onConnect={onConnect}
         fitView
-        // fitViewOptions={{ padding: 0.2 }}
+        fitViewOptions={{ padding: 0.2 }}
       />
     </div>
   );
