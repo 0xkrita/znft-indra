@@ -15,5 +15,5 @@ export const hashCode = (str: string): number => {
 };
 
 export const hashN = (...args: string[]): number => {
-  return args.reduce((prev, cur) => prev || hashCode(cur), 0);
+  return args.reduce((prev, cur) => prev | hashCode(cur), 0);
 };
