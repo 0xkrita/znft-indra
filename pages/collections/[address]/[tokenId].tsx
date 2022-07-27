@@ -1,8 +1,4 @@
-import {
-  MediaConfiguration,
-  Networks,
-  NFTFullPage,
-} from '@zoralabs/nft-components';
+import { MediaConfiguration, Networks } from '@zoralabs/nft-components';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import HistoryGraph from '../../../components/HistoryGraph';
@@ -27,7 +23,7 @@ const Token = () => {
               <HistoryGraph id={tokenId} contract={address}></HistoryGraph>
             </div>
 
-            <NFTFullPage id={tokenId} contract={address} />
+            {/* <NFTFullPage id={tokenId} contract={address} /> */}
           </MediaConfiguration>
         )}
       </div>

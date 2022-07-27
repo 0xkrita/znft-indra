@@ -2,6 +2,7 @@ import { EventType } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import assert from 'assert';
 import type { Edge, Node } from 'react-flow-renderer';
 import type { EventsGql, SaleWithTokenGql } from './gql-types';
+import { hashN } from './hash';
 
 /**
  * A lodash keyBy the block number of which the transaction happens.
@@ -47,7 +48,7 @@ export const eventsToEdges = (
       case EventType.MintEvent:
         assert(curr.properties.__typename === 'MintEvent');
         prev.push({
-          id: `e${curr.properties.originatorAddress}-${curr.properties.toAddress}`,
+          id: `${hashN(JSON.stringify(curr.transactionInfo), 'mint')}`,
           source: curr.properties.originatorAddress,
           target: curr.properties.toAddress,
           label: 'mints to', // TODO: come up with better names
@@ -58,7 +59,7 @@ export const eventsToEdges = (
       case EventType.TransferEvent:
         assert(curr.properties.__typename === 'TransferEvent');
         prev.push({
-          id: `e${curr.properties.fromAddress}-${curr.properties.toAddress}`,
+          id: `${hashN(JSON.stringify(curr.transactionInfo), 'transfer')}`,
           source: curr.properties.fromAddress,
           target: curr.properties.toAddress,
           label: 'transfers to',
@@ -142,7 +143,7 @@ export const salesToEdges = (
 ): Edge[] =>
   sales.reduce((prev, curr) => {
     prev.push({
-      id: `e${curr.sale.sellerAddress}-${curr.sale.buyerAddress}`,
+      id: `${hashN(JSON.stringify(curr.sale.transactionInfo), 'sales')}`,
       source: curr.sale.sellerAddress,
       label: `sold to`,
       target: curr.sale.buyerAddress,
