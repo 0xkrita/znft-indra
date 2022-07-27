@@ -48,7 +48,7 @@ export const eventsToEdges = (
       case EventType.MintEvent:
         assert(curr.properties.__typename === 'MintEvent');
         prev.push({
-          id: `${hashN(JSON.stringify(curr.transactionInfo), 'mint')}`,
+          id: `${curr.properties.originatorAddress}`,
           source: curr.properties.originatorAddress,
           target: curr.properties.toAddress,
           label: 'mints to', // TODO: come up with better names
@@ -59,7 +59,7 @@ export const eventsToEdges = (
       case EventType.TransferEvent:
         assert(curr.properties.__typename === 'TransferEvent');
         prev.push({
-          id: `${hashN(JSON.stringify(curr.transactionInfo), 'transfer')}`,
+          id: `${curr.properties.fromAddress}`,
           source: curr.properties.fromAddress,
           target: curr.properties.toAddress,
           label: 'transfers to',
@@ -143,7 +143,7 @@ export const salesToEdges = (
 ): Edge[] =>
   sales.reduce((prev, curr) => {
     prev.push({
-      id: `${hashN(JSON.stringify(curr.sale.transactionInfo), 'sales')}`,
+      id: `${hashN('sales', JSON.stringify(curr.sale.transactionInfo))}`,
       source: curr.sale.sellerAddress,
       label: `sold to`,
       target: curr.sale.buyerAddress,

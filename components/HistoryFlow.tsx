@@ -1,13 +1,4 @@
-import { useCallback, useState } from 'react';
-import ReactFlow, {
-  applyEdgeChanges,
-  // addEdge,
-  applyNodeChanges,
-  Edge,
-  EdgeChange,
-  Node,
-  NodeChange,
-} from 'react-flow-renderer';
+import ReactFlow, { useEdgesState, useNodesState } from 'react-flow-renderer';
 import { applyWidth } from '../utils/apply-flow-style';
 import { EventsGql, SaleWithTokenGql } from '../utils/gql-types';
 import {
@@ -25,25 +16,13 @@ export default function HistoryFlow({
   events?: EventsGql[];
   sales?: SaleWithTokenGql[];
 }) {
-  const [nodes, setNodes] = useState<Node[]>(
+  const [nodes, , onNodesChange] = useNodesState(
     applyWidth(combineNodes(salesToNodes(sales), eventsToNodes(events)))
   );
-  const [edges, setEdges] = useState<Edge[]>([
+  const [edges, , onEdgesChange] = useEdgesState([
     ...salesToEdges(sales),
     ...eventsToEdges(events),
   ]);
-
-  const onNodesChange = useCallback(
-    (changes: NodeChange[]) =>
-      setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
-  );
-
-  const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) =>
-      setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
-  );
 
   // const onConnect = useCallback(
   //   (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
@@ -59,7 +38,7 @@ export default function HistoryFlow({
         onEdgesChange={onEdgesChange}
         // onConnect={onConnect}
         fitView
-        fitViewOptions={{ padding: 0.2 }}
+        // fitViewOptions={{ padding: 0.2 }}
       />
     </div>
   );
