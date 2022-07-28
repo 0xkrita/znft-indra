@@ -2,7 +2,6 @@ import { EventType } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import assert from 'assert';
 import type { Edge, Node } from 'react-flow-renderer';
 import type { EventsGql, SaleWithTokenGql } from './gql-types';
-import { hashN } from './hash';
 
 /**
  * A lodash keyBy the block number of which the transaction happens.
@@ -140,7 +139,7 @@ export const salesToEdges = (
 ): Edge[] =>
   sales.reduce((prev, curr) => {
     prev.push({
-      id: `${hashN('sales', JSON.stringify(curr.sale.transactionInfo))}`,
+      id: `${curr.sale.sellerAddress}-s`,
       source: curr.sale.sellerAddress,
       label: `sold to`,
       target: curr.sale.buyerAddress,
