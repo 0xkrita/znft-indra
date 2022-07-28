@@ -122,8 +122,7 @@ export const eventsToNodes = (
     }
 
     // dedup
-    currentBatch.filter((e) => !nodes.some((n) => n.id === e.id));
-
+    currentBatch.filter((e) => !prev.some((n) => n.id === e.id));
     prev.push(...currentBatch);
     return prev;
   }, nodes);
@@ -173,7 +172,8 @@ export const salesToNodes = (
       data: { label: curr.sale.sellerAddress },
       position: { x: 700, y: idx * 150 + 5 },
     });
-    currentBatch.filter((e) => !nodes.some((n) => n.id === e.id));
+    currentBatch.filter((e) => !prev.some((n) => n.id === e.id));
+    prev.push(...currentBatch);
     return prev;
   }, nodes);
 
