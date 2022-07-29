@@ -53,11 +53,11 @@ const Search = () => {
           hundreds of thousands concept of the number one realm of the galaxies
           radio telescope. As a patch of light descended from astronomers two
           ghostly white figures in coveralls and helmets are softly dancing
-          emerged into consciousness Orion's sword encyclopaedia galactica.
+          emerged into consciousness Orion&apos;s sword encyclopaedia galactica.
           Another world bits of moving fluff network of wormholes muse about
-          network of wormholes with pretty stories for which there's little good
-          evidence and billions upon billions upon billions upon billions upon
-          billions upon billions upon billions.
+          network of wormholes with pretty stories for which there&apos;s little
+          good evidence and billions upon billions upon billions upon billions
+          upon billions upon billions upon billions.
           <br />
           <br />
         </p>
