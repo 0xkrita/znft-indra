@@ -62,14 +62,8 @@ const Search = () => {
           <br />
         </p>
       )}
-      {show && (
-        <div className="mx-5">
-          <Suggestions text={searchQuery} />
-        </div>
-      )}
-
-      <div className="px-1 py-1 flex justify-center">
-        <div className="box-content">{/* <AutoComplete /> */}</div>
+      <div className="mx-5">
+        <Suggestions text={searchQuery} show={show} />
       </div>
     </div>
   );

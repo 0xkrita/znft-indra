@@ -14,6 +14,7 @@ export const hashCode = (str: string): number => {
   return hash;
 };
 
+// TODO: lmao i dont think this function works at all
 export const hashN = (...args: string[]): number => {
   return args.reduce((prev, cur) => prev | hashCode(cur), 0);
 };
