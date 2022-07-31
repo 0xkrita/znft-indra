@@ -17,7 +17,7 @@ export default function HistoryFlow({
   sales?: SaleWithTokenGql[];
 }) {
   return (
-    <div className="text-xs h-screen/70">
+    <div className="text-xs h-screen/60">
       <ReactFlow
         defaultNodes={applyWidth(
           combineNodes(salesToNodes(sales), eventsToNodes(events))

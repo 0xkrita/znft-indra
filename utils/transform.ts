@@ -100,7 +100,7 @@ export const eventsToNodes = (
         currentBatch.push({
           id: curr.properties.toAddress,
           data: { label: curr.properties.toAddress },
-          position: { x: 1000, y: idx * 120 + 5 },
+          position: { x: 1000, y: idx * 150 + 5 },
         });
         break;
       case EventType.TransferEvent:
@@ -108,12 +108,12 @@ export const eventsToNodes = (
         currentBatch.push({
           id: curr.properties.fromAddress,
           data: { label: curr.properties.fromAddress },
-          position: { x: 5, y: idx * 100 + 5 }, // 100 offset
+          position: { x: 5, y: idx * 80 + 5 }, // 100 offset
         });
         currentBatch.push({
           id: curr.properties.toAddress,
           data: { label: curr.properties.toAddress },
-          position: { x: 500, y: idx * 120 + 5 },
+          position: { x: 500, y: idx * 150 + 5 },
         });
         break;
       default:
