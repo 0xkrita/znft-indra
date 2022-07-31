@@ -46,7 +46,7 @@ const Search = () => {
           }}
         />
       </form>
-      {show && (
+      {/* {show && (
         <p className="mx-5">
           Yes. This is supposed to be autocomplete. <br />
           <br /> Sea of Tranquility a mote of dust suspended in a sunbeam
@@ -61,7 +61,7 @@ const Search = () => {
           <br />
           <br />
         </p>
-      )}
+      )} */}
       <div className="mx-5">
         <Suggestions text={searchQuery} show={show} />
       </div>
