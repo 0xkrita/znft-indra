@@ -14,8 +14,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.1",
     "@zoralabs/nft-components": "^1.1.2",
-    "@zoralabs/nft-hooks": "^1.1.7",
-    "@zoralabs/zdk": "^2.1.3",
+    "@zoralabs/nft-hooks": "1.1.7",
+    "@zoralabs/zdk": "^2.2.0",
     "graphql": "^16.5.0",
     "next": "12.2.1",
     "react": "18.2.0",
