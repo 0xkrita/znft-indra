@@ -15,15 +15,10 @@ const Token = () => {
         {typeof address !== 'string' || typeof tokenId !== 'string' ? (
           <Error statusCode={404} />
         ) : (
-          <MediaConfiguration
-            strategy={zdkStrategy}
-            networkId={Networks.MAINNET}
-          >
+          <MediaConfiguration strategy={zdkStrategy}>
             <div className="border-blue-400 border-2 p-5">
               <HistoryGraph id={tokenId} contract={address}></HistoryGraph>
             </div>
-
-            {/* <NFTFullPage id={tokenId} contract={address} /> */}
           </MediaConfiguration>
         )}
       </div>

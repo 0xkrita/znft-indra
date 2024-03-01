@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
-    "@zoralabs/nft-components": "^1.1.2",
-    "@zoralabs/nft-hooks": "1.1.7",
+    "@zoralabs/nft-components": "1.1.2",
+    "@zoralabs/nft-hooks": "1.1.8",
     "@zoralabs/zdk": "^2.2.0",
     "graphql": "^16.8.1",
     "next": "12",
@@ -43,6 +43,10 @@
     "react-spring": "^9.7.3",
     "tailwindcss": "^3.3.5",
     "typescript": "5.2.2"
+  },
+  "peerDependencies": {
+    "react": ">= 17 < 19",
+    "react-dom": ">= 17 < 19"
   },
   "husky": {
     "hooks": {

@@ -823,13 +823,13 @@
     "@graphql-typed-document-node/core" "^3.1.1"
     wonka "^4.0.14"
 
-"@zoralabs/nft-components@^1.1.2":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@zoralabs/nft-components/-/nft-components-1.2.1.tgz#e13f69f2580e471c7876d65735df55f38b91d419"
-  integrity sha512-W+2Z9I7BY3JlWVFtMEUOcz6OHrHFdir/kL+enaTGL7aepVWQH3Y+hUQDUdb6wUOdXWXtTVLWrqYcIgmYQOg9Jw==
+"@zoralabs/nft-components@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@zoralabs/nft-components/-/nft-components-1.1.2.tgz#f05eb5bbcbacd0266a3f67843321b2973fcc74df"
+  integrity sha512-NQK6tklQM1FbKwP6waG6nrVxHSdPJyXmisCBKgAsY5DFs/XpiXoGfKf5YwaL2IxP330ixPK1lwGyL/sy07TuNw==
   dependencies:
     "@emotion/css" "^11.1.3"
-    "@zoralabs/nft-hooks" "^1.2.1"
+    "@zoralabs/nft-hooks" "1.1.7"
     deepmerge "^4.2.2"
     merge-anything "^4.0.1"
     tslib "^2.2.0"
@@ -852,15 +852,15 @@
     swr "^1.3.0"
     tslib "^2.4.0"
 
-"@zoralabs/nft-hooks@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@zoralabs/nft-hooks/-/nft-hooks-1.2.1.tgz#9e34ca0f736282e475e11c1a04b5f3f0fddde7e2"
-  integrity sha512-QOrw9HiGeJKncRBF0zm2mvtgqTonRowpHVvM14Oet/8JLGH8VPWvHFKN1jKQu7DP6XZciqbVi6F4UtOax6kEWg==
+"@zoralabs/nft-hooks@1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@zoralabs/nft-hooks/-/nft-hooks-1.1.8.tgz#24bc707be3555afd2e70dce68fdfa9a55982383f"
+  integrity sha512-AKXc/ym1BR2UIitDgRc/ud0QHwJVvuoKGjmGsco0Sh6CqzFswy4nBbjBM7UiuuL/84QcArI82KwHMCW5SG1PLA==
   dependencies:
     "@ethersproject/address" "^5.6.0"
     "@ethersproject/bytes" "^5.6.1"
     "@types/deepmerge" "^2.2.0"
-    "@zoralabs/zdk" "2.1.6"
+    "@zoralabs/zdk" "2.1.3"
     big.js "^6.1.0"
     cross-fetch "^3.1.4"
     dataloader "^2.0.0"
@@ -881,10 +881,10 @@
     graphql-tag "^2.12.6"
     tslib "^2.2.0"
 
-"@zoralabs/zdk@2.1.6":
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/@zoralabs/zdk/-/zdk-2.1.6.tgz#881b5edcda4503f2aa7ce60d03cb36ce802c0eb9"
-  integrity sha512-jBdenAEdIMCQyke83ZWxFN8KqP78vCm4RBOTCAQSdHh/VdEbVOx70jkcaFO/6W+bFuzkXHP/B5Sn+74TbXatsA==
+"@zoralabs/zdk@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@zoralabs/zdk/-/zdk-2.1.3.tgz#d7327d6cf4a95d74424e5393515d9ba999801f88"
+  integrity sha512-U3mTJ5a1vN8e9Olu5GOlL18+8FRDx+gxBD+gFlc5xAa8Ky5nc3ny7yb3MWS2ObRPlvJfMF+XtUAi494BO4lsEg==
   dependencies:
     big.js "^6.1.0"
     graphql "^16.5.0"
