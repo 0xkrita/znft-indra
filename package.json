@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
+    "@vercel/analytics": "^1.2.2",
     "@zoralabs/nft-components": "1.1.2",
     "@zoralabs/nft-hooks": "1.1.8",
     "@zoralabs/zdk": "^2.2.0",
