@@ -5,6 +5,7 @@ import { client } from '../utils/constants';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Footer from '../components/Footer';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
   return (
@@ -32,7 +33,13 @@ const Home: NextPage = () => {
         >
           <span className="font-medium">error&#58;</span> there are known issues
           with zora nft component libraries for out of maintenance,
-          troubleshooting now
+          troubleshooting now, check:{' '}
+          <Link
+            className="underline"
+            href="https://x.com/0xkrita/status/1763740148305658119?s=20"
+          >
+            here
+          </Link>
         </div>
         <Search />
         <Footer />

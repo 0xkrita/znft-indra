@@ -9,6 +9,7 @@ import Footer from '../../../components/Footer';
 import Header from '../../../components/Header';
 import Search from '../../../components/Search';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 const Token = () => {
   const router = useRouter();
@@ -54,7 +55,10 @@ const Token = () => {
         >
           <span className="font-medium">error&#58;</span> there are known issues
           with zora nft component libraries for out of maintenance,
-          troubleshooting now
+          troubleshooting now, check:
+          <Link href="https://x.com/0xkrita/status/1763740148305658119?s=20">
+            here
+          </Link>
         </div>
         <Search />
         <div className="mx-5 border-emerald-200 border-2 p-5 my-5">

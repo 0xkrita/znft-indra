@@ -20,8 +20,8 @@ More design TBD
 
 - This repo is currently only compatible with `react@17` due to limitations of @ourzora/nft-components version. This will need to be updated at a later stage.
 - Upgrade to Next.js app router
-- Zora's nft libraries is out of maintenance for over 2 years now, and this no long works as they turned on their CF ACL to block CORS requests (Error 1014), so next will be:
-  - come up with a in-house NFT component strategy with proper data fetching
+- Zora's nft libraries is out of maintenance for over 2 years now, and this no longer works as they turned on their CF ACL to block CORS requests on prod indexers which the NFT hooks relies on (Error 1014), so next will be:
+  - come up with a in-house NFT component strategy with proper data fetching with react query
     - you can check out the new restful api here: https://explorer.zora.energy/api-docs
   - or migrate over [nouns](https://github.com/nounsDAO/nouns-monorepo/tree/master/packages/nouns-sdk) sdk so that it has more up-to-date fetching strategy
   - and lastly deprecate all external libraries except basic eth standardized operations functions
