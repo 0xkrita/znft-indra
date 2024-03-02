@@ -22,5 +22,6 @@ More design TBD
 - Upgrade to Next.js app router
 - Zora's nft libraries is out of maintenance for over 2 years now, and this no long works as they turned on their CF ACL to block CORS requests (Error 1014), so next will be:
   - come up with a in-house NFT component strategy with proper data fetching
+    - you can check out the new restful api here: https://explorer.zora.energy/api-docs
   - or migrate over [nouns](https://github.com/nounsDAO/nouns-monorepo/tree/master/packages/nouns-sdk) sdk so that it has more up-to-date fetching strategy
   - and lastly deprecate all external libraries except basic eth standardized operations functions

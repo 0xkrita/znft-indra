@@ -56,7 +56,7 @@
   },
   "lint-staged": {
     "*/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "yarn prettier"
+      "pnpm prettier"
     ]
   }
 }
